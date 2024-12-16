@@ -1175,3 +1175,19 @@ p4
 
 # Save file as PNG for final figure production
 ggsave(p4, file="MtDNA.png", width=9, height=7, dpi=600)
+
+#Separate both sexes and test if the slopes for both sexes is indeed different, i.e. increasing for males and decreasing for females##
+
+# Filter data for females
+female_data <- subset(data, Sex == "F")
+
+# Fit linear model for females
+mtDNA_model_female <- lm(mtDNA.Mean ~ Age_Class, data = female_data)
+summary(mtDNA_model_female)
+
+# Filter data for males
+male_data <- subset(data, Sex == "M")
+
+# Fit linear model for males
+mtDNA_model_male <- lm(mtDNA.Mean ~ Age_Class, data = male_data)
+summary(mtDNA_model_male)
